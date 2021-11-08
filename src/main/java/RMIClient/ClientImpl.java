@@ -2,7 +2,6 @@ package RMIClient;
 
 import Model.User;
 import RMIServer.Server;
-
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -15,6 +14,7 @@ public class ClientImpl implements Client
 {
   private Server server;
 
+
   public ClientImpl() throws RemoteException, NotBoundException
   {
     UnicastRemoteObject.exportObject(this,0);
@@ -22,16 +22,54 @@ public class ClientImpl implements Client
     server = (Server) registry.lookup("Server");
   }
 
+
+  @Override
   public ArrayList<User> getAllUsers() throws RemoteException, SQLException
   {
     return server.getAllUser();
   }
 
+
+  @Override
   public void addUser(User user) throws RemoteException, SQLException
   {
     server.addUser(user);
     System.out.println("client add");
   }
 
+
+  @Override
+  public void sendMessage(String senderName, String receiveName, String text) throws SQLException, RemoteException
+  {
+    server.sendMessage(senderName,receiveName,text);
+  }
+
+
+  @Override
+  public ArrayList<String> getAllMessage(String senderName, String receiveName) throws SQLException, RemoteException
+  {
+    return server.getAllMessage(senderName,receiveName);
+  }
+
+
+  @Override
+  public ArrayList<String> getAllFriends(String username) throws SQLException, RemoteException
+  {
+    return server.getAllFriends(username);
+  }
+
+
+  @Override
+  public void increase(String username) throws SQLException, RemoteException
+  {
+    server.increase(username);
+  }
+
+
+  @Override
+  public int getNum(String username) throws SQLException, RemoteException
+  {
+    return server.getNum(username);
+  }
 
 }

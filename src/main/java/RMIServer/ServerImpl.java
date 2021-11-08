@@ -59,4 +59,76 @@ public class ServerImpl implements Server
   }
 
 
+  public void sendMessage(String senderName,String receiveName,String text) throws SQLException,RemoteException {
+    jdbc.sendMessage(senderName,receiveName,text);
+  }
+
+
+  public ArrayList<String> getAllMessage(String senderName, String receiveName) throws SQLException,RemoteException{
+    ResultSet rs = jdbc.getMessage(senderName,receiveName);
+    ArrayList<String> messages = new ArrayList<>();
+
+    try {
+      while (rs.next()){
+        String text = rs.getString("chatMessages");
+        messages.add(text);
+      }
+    }
+    catch (Exception e){
+      e.printStackTrace();
+    }
+
+    return messages;
+  }
+
+
+  public ArrayList<String> getAllFriends(String username) throws SQLException,RemoteException{
+    ResultSet rs = jdbc.getFriends(username);
+    ArrayList<String> strings = new ArrayList<>();
+
+    try {
+      while (rs.next()){
+        String friendName = rs.getString("friendName");
+
+        strings.add(friendName);
+      }
+    }
+    catch (Exception e){
+      e.printStackTrace();
+    }
+    return strings;
+
+  }
+
+
+  public void increase(String username) throws SQLException,RemoteException{
+    jdbc.increase(username);
+  }
+
+
+
+  public int getNum(String username) throws SQLException,RemoteException {
+    ResultSet rs = jdbc.getUnreadNum(username);
+    int num = 0;
+
+    try {
+      while (rs.next()){
+        int unread = rs.getInt("receiveMessageNum");
+
+        num = unread;
+      }
+    }
+    catch (Exception e){
+      e.printStackTrace();
+    }
+    return num;
+  }
+
+
+
+
+
+
+
+
 }

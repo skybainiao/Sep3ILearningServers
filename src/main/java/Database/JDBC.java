@@ -38,6 +38,56 @@ public class JDBC {
   }
 
 
+  public int sendMessage(String senderName,String receiveName,String text) throws SQLException {
+
+    String sql="insert into sep3data.Message(senderName,receiveName,chatMessages)\n" + "values(?,?,?)";
+    PreparedStatement preparedStatement=connection.prepareStatement(sql);
+    preparedStatement.setString(1, senderName);
+    preparedStatement.setString(2, receiveName);
+    preparedStatement.setString(3,text);
+
+    return preparedStatement.executeUpdate();
+  }
+
+
+  public ResultSet getMessage(String senderName,String receiveName) throws SQLException {
+    String sql="select chatMessages\n" + "from sep3data.Message\n" +
+        "where senderName = ? and receiveName = ?\n" +
+        "or senderName = ? and receiveName = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,senderName);
+    preparedStatement.setString(2,receiveName);
+    preparedStatement.setString(3,receiveName);
+    preparedStatement.setString(4,senderName);
+
+    return preparedStatement.executeQuery();
+  }
+
+
+  public ResultSet getFriends(String username) throws SQLException {
+    String sql="select friendName from sep3data.Friend where username = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,username);
+
+    return preparedStatement.executeQuery();
+  }
+  public int increase(String username) throws SQLException {
+    String sql="update sep3data.SimpleUser set receiveMessageNum = receiveMessageNum+1 where username = ?";
+    PreparedStatement preparedStatement=connection.prepareStatement(sql);
+    preparedStatement.setString(1,username);
+
+    return preparedStatement.executeUpdate();
+  }
+
+
+  public ResultSet getUnreadNum(String username) throws SQLException
+  {
+    String sql = "select receiveMessageNum\n" + "from sep3data.SimpleUser\n" + "where username = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1, username);
+
+    return preparedStatement.executeQuery();
+  }
 
 
 

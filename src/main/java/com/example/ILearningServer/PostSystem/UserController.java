@@ -6,19 +6,15 @@ import Model.Greeting;
 import Model.User;
 import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.*;
-
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 @RestController
 public class UserController
 {
 
   private Gson gson = new Gson();
-  private ArrayList<Greeting> greetings = new ArrayList<>();
-  private ArrayList<User> users = new ArrayList<>();
   private Greeting greeting = new Greeting("Chen");
   private Client client;
 
@@ -44,13 +40,30 @@ public class UserController
 
 
   @PostMapping("/user")
-  public String post(@RequestBody String user)
-      throws RemoteException, SQLException
+  public String addUser(@RequestBody String user) throws RemoteException, SQLException
   {
     User user1 = gson.fromJson(user,User.class);
     client.addUser(user1);
     System.out.println(user1);
     return user;
   }
+
+
+  @GetMapping("getFriends")
+  public String getAllFriends(@RequestParam String username) throws SQLException, RemoteException
+  {
+    String str = gson.toJson(client.getAllFriends(username));
+
+    return str;
+
+  }
+
+
+
+
+
+
+
+
 
 }
