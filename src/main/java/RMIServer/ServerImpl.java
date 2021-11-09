@@ -14,14 +14,18 @@ import java.util.ArrayList;
 public class ServerImpl implements Server
 {
   private JDBC jdbc;
+  private ArrayList<String> onlineUsers;
 
   public ServerImpl() throws Exception{
     Registry registry = LocateRegistry.createRegistry(6666);
     registry.bind("Server",this);
     UnicastRemoteObject.exportObject(this,6666);
     jdbc = new JDBC();
+    onlineUsers = new ArrayList<>();
 
   }
+
+
 
   public void addUser(User user) throws SQLException
   {
@@ -82,21 +86,27 @@ public class ServerImpl implements Server
   }
 
 
-  public ArrayList<String> getAllFriends(String username) throws SQLException,RemoteException{
+  public ArrayList<User> getAllFriends(String username) throws SQLException,RemoteException{
     ResultSet rs = jdbc.getFriends(username);
-    ArrayList<String> strings = new ArrayList<>();
+    ArrayList<User> users = new ArrayList<>();
 
     try {
       while (rs.next()){
         String friendName = rs.getString("friendName");
 
-        strings.add(friendName);
+        for (int i = 0; i < getAllUser().size(); i++)
+        {
+          if (getAllUser().get(i).getUsername().equals(friendName)){
+            users.add(getAllUser().get(i));
+          }
+        }
+
       }
     }
     catch (Exception e){
       e.printStackTrace();
     }
-    return strings;
+    return users;
 
   }
 

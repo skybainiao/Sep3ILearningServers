@@ -53,7 +53,7 @@ public class ClientImpl implements Client
 
 
   @Override
-  public ArrayList<String> getAllFriends(String username) throws SQLException, RemoteException
+  public ArrayList<User> getAllFriends(String username) throws SQLException, RemoteException
   {
     return server.getAllFriends(username);
   }
@@ -71,5 +71,7 @@ public class ClientImpl implements Client
   {
     return server.getNum(username);
   }
+
+
 
 }

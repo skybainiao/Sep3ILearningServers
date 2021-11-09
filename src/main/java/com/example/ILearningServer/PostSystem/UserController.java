@@ -49,7 +49,7 @@ public class UserController
   }
 
 
-  @GetMapping("getFriends")
+  @GetMapping("/getFriends")
   public String getAllFriends(@RequestParam String username) throws SQLException, RemoteException
   {
     String str = gson.toJson(client.getAllFriends(username));
@@ -57,11 +57,6 @@ public class UserController
     return str;
 
   }
-
-
-
-
-
 
 
 
