@@ -17,7 +17,8 @@ public interface Client extends Remote
   ArrayList<User> getAllFriends(String username) throws SQLException,RemoteException;
   void increase(String username) throws SQLException,RemoteException;
   int getNum(String username) throws SQLException,RemoteException;
-
+  void addFriend(String username,String friendName) throws SQLException,RemoteException;
+  void clearMessageNum(String username) throws SQLException,RemoteException;
 
 
 

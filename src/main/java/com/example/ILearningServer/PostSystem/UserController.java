@@ -40,12 +40,11 @@ public class UserController
 
 
   @PostMapping("/user")
-  public String addUser(@RequestBody String user) throws RemoteException, SQLException
+  public void addUser(@RequestBody String user) throws RemoteException, SQLException
   {
     User user1 = gson.fromJson(user,User.class);
     client.addUser(user1);
     System.out.println(user1);
-    return user;
   }
 
 
@@ -57,6 +56,19 @@ public class UserController
     return str;
 
   }
+
+
+  @PostMapping("/addFriend")
+  public void addFriend(@RequestBody String username,String friendName) throws SQLException, RemoteException
+  {
+    client.addFriend(username,friendName);
+  }
+
+
+
+
+
+
 
 
 

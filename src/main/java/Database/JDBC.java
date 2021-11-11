@@ -90,5 +90,26 @@ public class JDBC {
   }
 
 
+  public int addFriend(String username,String fiendName) throws SQLException
+  {
+    String sql = "insert into sep3data.Friend(username, friendName)\n" + "values (?,?)";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,username);
+    preparedStatement.setString(2,fiendName);
+
+    return preparedStatement.executeUpdate();
+  }
+
+
+  public int clearMessage(String username) throws SQLException
+  {
+    String sql = "update sep3data.SimpleUser set receiveMessageNum = 0 where username = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,username);
+    return preparedStatement.executeUpdate();
+
+  }
+
+
 
 }

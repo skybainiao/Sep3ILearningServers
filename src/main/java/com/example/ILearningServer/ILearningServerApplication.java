@@ -1,5 +1,6 @@
 package com.example.ILearningServer;
 
+import com.example.ILearningServer.PostSystem.ChatController;
 import com.example.ILearningServer.PostSystem.UserController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +18,7 @@ public class ILearningServerApplication {
 		SpringApplication.run(ILearningServerApplication.class, args);
 
 		UserController userController = new UserController();
-
+		ChatController chatController = new ChatController();
 
 	}
 

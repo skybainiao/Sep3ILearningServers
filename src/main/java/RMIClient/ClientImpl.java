@@ -73,5 +73,15 @@ public class ClientImpl implements Client
   }
 
 
+  @Override public void addFriend(String username, String friendName) throws SQLException, RemoteException
+  {
+    server.addFriend(username,friendName);
+  }
+
+
+  @Override public void clearMessageNum(String username) throws SQLException, RemoteException
+  {
+    server.clearMessageNum(username);
+  }
 
 }

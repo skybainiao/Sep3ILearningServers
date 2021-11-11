@@ -135,9 +135,16 @@ public class ServerImpl implements Server
   }
 
 
+  public void addFriend(String username,String friendName) throws SQLException
+  {
+    jdbc.addFriend(username,friendName);
+  }
 
 
-
+  public void clearMessageNum(String username) throws SQLException
+  {
+    jdbc.clearMessage(username);
+  }
 
 
 
