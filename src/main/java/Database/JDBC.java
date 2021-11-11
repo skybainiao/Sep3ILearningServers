@@ -51,7 +51,7 @@ public class JDBC {
 
 
   public ResultSet getMessage(String senderName,String receiveName) throws SQLException {
-    String sql="select chatMessages\n" + "from sep3data.Message\n" +
+    String sql="select *\n" + "from sep3data.Message\n" +
         "where senderName = ? and receiveName = ?\n" +
         "or senderName = ? and receiveName = ?";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);

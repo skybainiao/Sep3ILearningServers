@@ -37,6 +37,7 @@ public class ChatController
   public String getMessages(String sender,String receiver) throws SQLException, RemoteException
   {
     String str = gson.toJson(client.getAllMessage(sender, receiver));
+    System.out.println(str);
 
     return str;
   }
