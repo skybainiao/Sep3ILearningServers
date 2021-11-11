@@ -1,6 +1,7 @@
 package RMIServer;
 
 import Database.JDBC;
+import Model.Message;
 import Model.User;
 
 import java.rmi.RemoteException;
@@ -68,14 +69,18 @@ public class ServerImpl implements Server
   }
 
 
-  public ArrayList<String> getAllMessage(String senderName, String receiveName) throws SQLException,RemoteException{
+  public ArrayList<Message> getAllMessage(String senderName, String receiveName) throws SQLException,RemoteException{
     ResultSet rs = jdbc.getMessage(senderName,receiveName);
-    ArrayList<String> messages = new ArrayList<>();
+    ArrayList<Message> messages = new ArrayList<>();
 
     try {
       while (rs.next()){
+
+        String sender = rs.getString("senderName");
+        String receiver = rs.getString("receiveName");
         String text = rs.getString("chatMessages");
-        messages.add(text);
+        messages.add(new Message(sender,receiver,text));
+
       }
     }
     catch (Exception e){

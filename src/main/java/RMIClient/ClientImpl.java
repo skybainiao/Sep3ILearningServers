@@ -1,7 +1,10 @@
 package RMIClient;
 
+import Model.Message;
 import Model.User;
 import RMIServer.Server;
+
+import javax.print.attribute.standard.Media;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -46,7 +49,7 @@ public class ClientImpl implements Client
 
 
   @Override
-  public ArrayList<String> getAllMessage(String senderName, String receiveName) throws SQLException, RemoteException
+  public ArrayList<Message> getAllMessage(String senderName, String receiveName) throws SQLException, RemoteException
   {
     return server.getAllMessage(senderName,receiveName);
   }
