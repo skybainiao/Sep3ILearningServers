@@ -3,8 +3,6 @@ package RMIClient;
 import Model.Message;
 import Model.User;
 import RMIServer.Server;
-
-import javax.print.attribute.standard.Media;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;

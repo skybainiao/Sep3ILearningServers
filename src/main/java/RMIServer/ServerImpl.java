@@ -4,6 +4,7 @@ import Database.JDBC;
 import Model.Message;
 import Model.User;
 
+import javax.swing.*;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -152,7 +153,15 @@ public class ServerImpl implements Server
 
   public void sendFriendRequest(String sender,String receiver,String comment) throws SQLException
   {
-    jdbc.sendFriendRequest(sender, receiver, comment);
+    try
+    {
+      jdbc.sendFriendRequest(sender, receiver, comment);
+    }
+    catch (Exception e){
+      System.out.println("you already send request");
+      JOptionPane.showMessageDialog(null,"you already send request","Tip",JOptionPane.ERROR_MESSAGE);
+    }
+
   }
 
 
