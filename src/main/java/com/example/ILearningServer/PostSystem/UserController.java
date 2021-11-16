@@ -65,6 +65,12 @@ public class UserController
   }
 
 
+  @PostMapping("/sendRequest")
+  public void sendFriendRequest(@RequestBody String sender,String receiver,String comment) throws SQLException, RemoteException
+  {
+    client.sendFriendRequest(sender, receiver, comment);
+  }
+
 
 
 

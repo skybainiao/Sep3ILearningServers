@@ -15,14 +15,12 @@ import java.util.ArrayList;
 public class ServerImpl implements Server
 {
   private JDBC jdbc;
-  private ArrayList<String> onlineUsers;
 
   public ServerImpl() throws Exception{
     Registry registry = LocateRegistry.createRegistry(6666);
     registry.bind("Server",this);
     UnicastRemoteObject.exportObject(this,6666);
     jdbc = new JDBC();
-    onlineUsers = new ArrayList<>();
 
   }
 
@@ -149,6 +147,12 @@ public class ServerImpl implements Server
   public void clearMessageNum(String username) throws SQLException
   {
     jdbc.clearMessage(username);
+  }
+
+
+  public void sendFriendRequest(String sender,String receiver,String comment) throws SQLException
+  {
+    jdbc.sendFriendRequest(sender, receiver, comment);
   }
 
 

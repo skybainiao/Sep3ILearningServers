@@ -20,6 +20,7 @@ public interface Server extends Remote
   int getNum(String username) throws SQLException,RemoteException;
   void addFriend(String username,String friendName) throws SQLException,RemoteException;
   void clearMessageNum(String username) throws SQLException,RemoteException;
+  void sendFriendRequest(String sender,String receiver,String comment) throws SQLException,RemoteException;
 
 
 }

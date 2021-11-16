@@ -111,5 +111,18 @@ public class JDBC {
   }
 
 
+  public int sendFriendRequest(String sender,String receiver,String comment)
+      throws SQLException
+  {
+    String sql = "insert into FriendRequest(sender, receiver, comment)\n" + "values (?,?,?)";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,sender);
+    preparedStatement.setString(2,receiver);
+    preparedStatement.setString(3,comment);
+
+    return preparedStatement.executeUpdate();
+  }
+
+
 
 }
