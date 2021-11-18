@@ -2,9 +2,13 @@ package RMIServer;
 
 import Database.JDBC;
 import Model.Message;
+import Model.Profile;
 import Model.User;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -32,7 +36,6 @@ public class ServerImpl implements Server
 
     jdbc.addUser(user.getUsername(), user.getPassword());
     System.out.println("Server added a user : "+user);
-
   }
 
 
@@ -104,7 +107,6 @@ public class ServerImpl implements Server
             users.add(getAllUser().get(i));
           }
         }
-
       }
     }
     catch (Exception e){
@@ -156,12 +158,56 @@ public class ServerImpl implements Server
     try
     {
       jdbc.sendFriendRequest(sender, receiver, comment);
+
     }
     catch (Exception e){
       System.out.println("you already send request");
       JOptionPane.showMessageDialog(null,"you already send request","Tip",JOptionPane.ERROR_MESSAGE);
     }
 
+  }
+
+
+  public void addProfile(Profile profile) throws SQLException
+  {
+    jdbc.addProfile(profile.getUsername(), profile.getFirstName(),
+        profile.getLastName(), profile.getEmail(), profile.getPhoneNumber(),
+        profile.getCountry());
+  }
+
+
+  public ArrayList<Profile> getProfiles(String username) throws SQLException
+  {
+    ResultSet resultSet = jdbc.getProfile(username);
+    ArrayList<Profile> profiles = new ArrayList<>();
+
+    try
+    {
+      while (resultSet.next()){
+
+        String username1 = resultSet.getString(1);
+        String firstName = resultSet.getString(2);
+        String lastName = resultSet.getString(3);
+        String email = resultSet.getString(4);
+        String phoneNumber = resultSet.getString(5);
+        String country = resultSet.getString(6);
+
+        Profile profile = new Profile(username1,firstName,lastName,email,phoneNumber,country);
+
+        profiles.add(profile);
+      }
+    }
+    catch (Exception e){
+      e.printStackTrace();
+    }
+    return profiles;
+
+  }
+
+
+  public void deleteProfile(String username) throws SQLException
+  {
+    jdbc.deleteProfile(username);
   }
 
 

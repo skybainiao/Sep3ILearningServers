@@ -1,11 +1,16 @@
 package com.example.ILearningServer.PostSystem;
 
+import Model.Profile;
 import RMIClient.Client;
 import RMIClient.ClientImpl;
 import Model.Greeting;
 import Model.User;
 import com.google.gson.Gson;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.File;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -76,6 +81,33 @@ public class UserController
       System.out.println("you already send request");
     }
 
+  }
+
+
+  @PostMapping("/addProfile")
+  public void addProfile(@RequestBody String profile)
+      throws SQLException, RemoteException
+  {
+    Profile profile1 = gson.fromJson(profile,Profile.class);
+    client.addProfile(profile1);
+  }
+
+
+  @GetMapping("/getProfile")
+  public String getProfile(@RequestParam String username)
+      throws SQLException, RemoteException
+  {
+    String str = gson.toJson(client.getProfiles(username));
+
+    return str;
+  }
+
+
+  @PostMapping("/deleteProfile")
+  public void deleteProfile(@RequestBody String username)
+      throws SQLException, RemoteException
+  {
+    client.deleteProfile(username);
   }
 
 

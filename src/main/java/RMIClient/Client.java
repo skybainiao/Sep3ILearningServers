@@ -1,6 +1,7 @@
 package RMIClient;
 
 import Model.Message;
+import Model.Profile;
 import Model.User;
 
 import java.rmi.Remote;
@@ -30,6 +31,12 @@ public interface Client extends Remote
   void clearMessageNum(String username) throws SQLException,RemoteException;
 
   void sendFriendRequest(String sender,String receiver,String comment) throws SQLException,RemoteException;
+
+  void addProfile(Profile profile) throws SQLException,RemoteException;
+
+  ArrayList<Profile> getProfiles(String username) throws SQLException,RemoteException;
+
+  void deleteProfile(String username) throws SQLException,RemoteException;
 
 
 
