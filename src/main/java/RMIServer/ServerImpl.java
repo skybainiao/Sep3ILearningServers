@@ -4,11 +4,7 @@ import Database.JDBC;
 import Model.Message;
 import Model.Profile;
 import Model.User;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-
 import javax.swing.*;
-import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
