@@ -6,11 +6,7 @@ import RMIClient.ClientImpl;
 import Model.Greeting;
 import Model.User;
 import com.google.gson.Gson;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.File;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -94,10 +90,10 @@ public class UserController
 
 
   @GetMapping("/getProfile")
-  public String getProfile(@RequestParam String username)
+  public String getProfile()
       throws SQLException, RemoteException
   {
-    String str = gson.toJson(client.getProfiles(username));
+    String str = gson.toJson(client.getProfiles());
 
     return str;
   }

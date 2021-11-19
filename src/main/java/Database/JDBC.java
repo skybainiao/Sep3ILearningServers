@@ -123,9 +123,9 @@ public class JDBC {
   }
 
 
-  public int addProfile(String username,String firstName,String lastName,String email,String phoneNumber,String country) throws SQLException
+  public int addProfile(String username,String firstName,String lastName,String email,String phoneNumber,String country,String age,String sex) throws SQLException
   {
-    String sql = "insert into sep3data.Profile(username, firstName, lastName, email, phoneNumber, country)\n" + "values (?,?,?,?,?,?)";
+    String sql = "insert into sep3data.Profile(username, firstName, lastName, email, phoneNumber, country)\n" + "values (?,?,?,?,?,?,?,?)";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,username);
     preparedStatement.setString(2,firstName);
@@ -133,16 +133,17 @@ public class JDBC {
     preparedStatement.setString(4,email);
     preparedStatement.setString(5,phoneNumber);
     preparedStatement.setString(6,country);
+    preparedStatement.setString(7,age);
+    preparedStatement.setString(8,sex);
 
     return preparedStatement.executeUpdate();
   }
 
 
-  public ResultSet getProfile(String username) throws SQLException
+  public ResultSet getProfile() throws SQLException
   {
     String sql = "select * from sep3data.Profile";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
-    preparedStatement.setString(1,username);
 
     return preparedStatement.executeQuery();
   }

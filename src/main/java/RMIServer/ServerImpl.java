@@ -172,13 +172,13 @@ public class ServerImpl implements Server
   {
     jdbc.addProfile(profile.getUsername(), profile.getFirstName(),
         profile.getLastName(), profile.getEmail(), profile.getPhoneNumber(),
-        profile.getCountry());
+        profile.getCountry(),profile.getAge(), profile.getSex());
   }
 
 
-  public ArrayList<Profile> getProfiles(String username) throws SQLException
+  public ArrayList<Profile> getProfiles() throws SQLException
   {
-    ResultSet resultSet = jdbc.getProfile(username);
+    ResultSet resultSet = jdbc.getProfile();
     ArrayList<Profile> profiles = new ArrayList<>();
 
     try
@@ -191,8 +191,10 @@ public class ServerImpl implements Server
         String email = resultSet.getString(4);
         String phoneNumber = resultSet.getString(5);
         String country = resultSet.getString(6);
+        String age = resultSet.getString(7);
+        String sex = resultSet.getString(8);
 
-        Profile profile = new Profile(username1,firstName,lastName,email,phoneNumber,country);
+        Profile profile = new Profile(username1,firstName,lastName,email,phoneNumber,country,age,sex);
 
         profiles.add(profile);
       }

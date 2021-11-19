@@ -32,7 +32,7 @@ public interface Server extends Remote
 
   void addProfile(Profile profile) throws SQLException,RemoteException;
 
-  ArrayList<Profile> getProfiles(String username) throws SQLException,RemoteException;
+  ArrayList<Profile> getProfiles() throws SQLException,RemoteException;
 
   void deleteProfile(String username) throws SQLException,RemoteException;
 

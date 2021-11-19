@@ -1,6 +1,8 @@
 package Model;
 
-public class Profile
+import java.io.Serializable;
+
+public class Profile implements Serializable
 {
 
   private String firstName;
@@ -15,13 +17,19 @@ public class Profile
 
   private String country;
 
-  public Profile(String firstName,String lastName,String username,String email,String phoneNumber,String country){
+  private String age;
+
+  private String sex;
+
+  public Profile(String firstName,String lastName,String username,String email,String phoneNumber,String country,String age,String sex){
     this.firstName=firstName;
     this.lastName=lastName;
     this.username=username;
     this.email=email;
     this.phoneNumber=phoneNumber;
     this.country=country;
+    this.age=age;
+    this.sex=sex;
   }
 
   public void setUsername(String username)
@@ -84,13 +92,32 @@ public class Profile
     return phoneNumber;
   }
 
+  public void setAge(String age)
+  {
+    this.age = age;
+  }
+
+  public String getAge()
+  {
+    return age;
+  }
+
+  public void setSex(String sex)
+  {
+    this.sex = sex;
+  }
+
+  public String getSex()
+  {
+    return sex;
+  }
+
   @Override public String toString()
   {
     return "Profile{" + "firstName='" + firstName + '\'' + ", lastName='"
         + lastName + '\'' + ", username='" + username + '\'' + ", email='"
         + email + '\'' + ", phoneNumber='" + phoneNumber + '\'' + ", country='"
-        + country + '\'' + '}';
+        + country + '\'' + ", age='" + age + '\'' + ", sex='" + sex + '\''
+        + '}';
   }
-
-
 }

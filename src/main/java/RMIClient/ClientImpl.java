@@ -103,10 +103,10 @@ public class ClientImpl implements Client
   }
 
 
-  @Override public ArrayList<Profile> getProfiles(String username)
+  @Override public ArrayList<Profile> getProfiles()
       throws SQLException, RemoteException
   {
-    return server.getProfiles(username);
+    return server.getProfiles();
   }
 
 
