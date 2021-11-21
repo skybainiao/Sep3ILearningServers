@@ -104,6 +104,7 @@ public class UserController
       throws SQLException, RemoteException
   {
     client.deleteProfile(username);
+    System.out.println(username);
   }
 
 

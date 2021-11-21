@@ -206,6 +206,8 @@ public class ServerImpl implements Server
   public void deleteProfile(String username) throws SQLException
   {
     jdbc.deleteProfile(username);
+    System.out.println(jdbc.deleteProfile(username));
+    System.out.println("uesd");
   }
 
 

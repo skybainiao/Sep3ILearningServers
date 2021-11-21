@@ -125,7 +125,7 @@ public class JDBC {
 
   public int addProfile(String username,String firstName,String lastName,String email,String phoneNumber,String country,String age,String sex) throws SQLException
   {
-    String sql = "insert into sep3data.Profile(username, firstName, lastName, email, phoneNumber, country)\n" + "values (?,?,?,?,?,?,?,?)";
+    String sql = "insert into sep3data.Profile(username, firstName, lastName, email, phoneNumber, country,age,sex)\n" + "values (?,?,?,?,?,?,?,?)";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,username);
     preparedStatement.setString(2,firstName);
