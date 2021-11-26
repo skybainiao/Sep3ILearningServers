@@ -90,8 +90,7 @@ public class UserController
 
 
   @GetMapping("/getProfile")
-  public String getProfile()
-      throws SQLException, RemoteException
+  public String getProfile() throws SQLException, RemoteException
   {
     String str = gson.toJson(client.getProfiles());
 
@@ -105,6 +104,16 @@ public class UserController
   {
     client.deleteProfile(username);
     System.out.println(username);
+  }
+
+
+  @GetMapping("/getRequest")
+  public String getRequest(@RequestParam String username) throws SQLException, RemoteException
+  {
+    String str = gson.toJson(client.getRequest(username));
+
+    return str;
+
   }
 
 

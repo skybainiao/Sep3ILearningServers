@@ -3,6 +3,7 @@ package RMIServer;
 import Database.JDBC;
 import Model.Message;
 import Model.Profile;
+import Model.Request;
 import Model.User;
 import javax.swing.*;
 import java.rmi.RemoteException;
@@ -160,6 +161,31 @@ public class ServerImpl implements Server
       System.out.println("you already send request");
       JOptionPane.showMessageDialog(null,"you already send request","Tip",JOptionPane.ERROR_MESSAGE);
     }
+
+  }
+
+
+  public ArrayList<Request> getRequest(String username) throws SQLException,RemoteException
+  {
+    ResultSet resultSet = jdbc.getRequest(username);
+    ArrayList<Request> requests = new ArrayList<>();
+
+    try
+    {
+      while (resultSet.next()){
+        String sender = resultSet.getString(1);
+        String receiver = resultSet.getString(2);
+        String comment = resultSet.getString(3);
+
+        Request request = new Request(sender,receiver,comment);
+        requests.add(request);
+
+      }
+    }
+    catch (Exception e){
+      e.printStackTrace();
+    }
+    return requests;
 
   }
 

@@ -2,6 +2,7 @@ package RMIClient;
 
 import Model.Message;
 import Model.Profile;
+import Model.Request;
 import Model.User;
 import RMIServer.Server;
 import java.rmi.NotBoundException;
@@ -95,6 +96,11 @@ public class ClientImpl implements Client
     server.sendFriendRequest(sender, receiver, comment);
   }
 
+  @Override public ArrayList<Request> getRequest(String username)
+      throws SQLException, RemoteException
+  {
+    return server.getRequest(username);
+  }
 
   @Override public void addProfile(Profile profile)
       throws SQLException, RemoteException

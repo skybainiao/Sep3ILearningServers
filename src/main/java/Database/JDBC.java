@@ -123,6 +123,16 @@ public class JDBC {
   }
 
 
+  public ResultSet getRequest(String username) throws SQLException
+  {
+    String sql = "select * from sep3data.FriendRequest where receiver = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,username);
+
+    return preparedStatement.executeQuery();
+  }
+
+
   public int addProfile(String username,String firstName,String lastName,String email,String phoneNumber,String country,String age,String sex) throws SQLException
   {
     String sql = "insert into sep3data.Profile(username, firstName, lastName, email, phoneNumber, country,age,sex)\n" + "values (?,?,?,?,?,?,?,?)";
