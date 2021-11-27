@@ -42,6 +42,14 @@ public class ChatController
     return str;
   }
 
+  @GetMapping("/getAllMessages")
+  public String getAllMessages(@RequestBody String receiver)
+      throws SQLException, RemoteException
+  {
+    String str = gson.toJson(client.getAllMessageByReceiver(receiver));
+    return str;
+  }
+
 
   @GetMapping("/unreadNum")
   public int getNum(String username) throws SQLException, RemoteException

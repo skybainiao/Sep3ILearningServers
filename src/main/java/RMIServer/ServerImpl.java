@@ -119,6 +119,30 @@ public class ServerImpl implements Server
   }
 
 
+  public ArrayList<Message> getAllMessageByReceiver(String receiver) throws SQLException,RemoteException
+  {
+    ResultSet resultSet = jdbc.getAllMessage(receiver);
+    ArrayList<Message> messages = new ArrayList<>();
+
+    try
+    {
+      while (resultSet.next()){
+
+        String sender = resultSet.getString("senderName");
+        String receiverName = resultSet.getString("receiveName");
+        String text = resultSet.getString("chatMessages");
+        messages.add(new Message(sender,receiverName,text));
+
+      }
+    }
+    catch (Exception e){
+      e.printStackTrace();
+    }
+
+    return messages;
+  }
+
+
   public ArrayList<User> getAllFriends(String username) throws SQLException,RemoteException{
     ResultSet rs = jdbc.getFriends(username);
     ArrayList<User> users = new ArrayList<>();

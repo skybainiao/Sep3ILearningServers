@@ -85,6 +85,16 @@ public class JDBC {
   }
 
 
+  public ResultSet getAllMessage(String receiver) throws SQLException
+  {
+    String sql = "select *\n" + "from sep3data.Message\n" + "where receiveName = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,receiver);
+
+    return preparedStatement.executeQuery();
+  }
+
+
   public ResultSet getFriends(String username) throws SQLException {
     String sql="select friendName from sep3data.Friend where username = ?";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
