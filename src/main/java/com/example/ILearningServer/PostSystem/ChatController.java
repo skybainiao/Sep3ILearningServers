@@ -3,10 +3,8 @@ package com.example.ILearningServer.PostSystem;
 import RMIClient.Client;
 import RMIClient.ClientImpl;
 import com.google.gson.Gson;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -43,7 +41,7 @@ public class ChatController
   }
 
   @GetMapping("/getAllMessages")
-  public String getAllMessages(@RequestBody String receiver)
+  public String getAllMessages(@RequestParam String receiver)
       throws SQLException, RemoteException
   {
     String str = gson.toJson(client.getAllMessageByReceiver(receiver));
