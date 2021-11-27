@@ -1,10 +1,8 @@
 package RMIServer;
 
 import Database.JDBC;
-import Model.Message;
-import Model.Profile;
-import Model.Request;
-import Model.User;
+import Model.*;
+
 import javax.swing.*;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -60,6 +58,37 @@ public class ServerImpl implements Server
 
     return users;
 
+  }
+
+
+  public void addLecturerAccount(LecturerAccount lecturerAccount) throws SQLException,RemoteException
+  {
+    jdbc.addLecturerAccount(lecturerAccount.getLecturerName(), lecturerAccount.getUsername(), lecturerAccount.getPassword());
+  }
+
+
+  public ArrayList<LecturerAccount> getAllLecturerAccounts() throws SQLException,RemoteException
+  {
+    ResultSet resultSet = jdbc.getAllLecturerAccount();
+    ArrayList<LecturerAccount> lecturerAccounts = new ArrayList<>();
+
+    try
+    {
+      while (resultSet.next()){
+        String lecturerName = resultSet.getString(1);
+        String username = resultSet.getString(2);
+        String password = resultSet.getString(3);
+
+        LecturerAccount lecturerAccount = new LecturerAccount(lecturerName,username,password);
+        lecturerAccounts.add(lecturerAccount);
+
+      }
+    }
+    catch (Exception e){
+      e.printStackTrace();
+    }
+
+    return lecturerAccounts;
   }
 
 

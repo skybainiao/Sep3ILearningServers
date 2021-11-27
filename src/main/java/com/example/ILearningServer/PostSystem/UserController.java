@@ -15,12 +15,13 @@ import java.sql.SQLException;
 public class UserController
 {
 
-  private Gson gson = new Gson();
+  private Gson gson;
   private Greeting greeting = new Greeting("Chen");
   private Client client;
 
   public UserController() throws RemoteException, NotBoundException
   {
+    gson = new Gson();
     client = new ClientImpl();
   }
 

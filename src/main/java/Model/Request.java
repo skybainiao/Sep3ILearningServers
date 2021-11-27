@@ -1,6 +1,8 @@
 package Model;
 
-public class Request
+import java.io.Serializable;
+
+public class Request implements Serializable
 {
   private String sender;
   private String receiver;

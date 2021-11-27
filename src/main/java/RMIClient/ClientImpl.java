@@ -1,9 +1,6 @@
 package RMIClient;
 
-import Model.Message;
-import Model.Profile;
-import Model.Request;
-import Model.User;
+import Model.*;
 import RMIServer.Server;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -120,6 +117,18 @@ public class ClientImpl implements Client
       throws SQLException, RemoteException
   {
     server.deleteProfile(username);
+  }
+
+  @Override public void addLecturerAccount(LecturerAccount lecturerAccount)
+      throws SQLException, RemoteException
+  {
+    server.addLecturerAccount(lecturerAccount);
+  }
+
+  @Override public ArrayList<LecturerAccount> getAllLecturerAccounts()
+      throws SQLException, RemoteException
+  {
+    return server.getAllLecturerAccounts();
   }
 
 }

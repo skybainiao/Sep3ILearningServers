@@ -1,9 +1,7 @@
 package RMIServer;
 
-import Model.Message;
-import Model.Profile;
-import Model.Request;
-import Model.User;
+import Model.*;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -38,6 +36,10 @@ public interface Server extends Remote
   ArrayList<Profile> getProfiles() throws SQLException,RemoteException;
 
   void deleteProfile(String username) throws SQLException,RemoteException;
+
+  void addLecturerAccount(LecturerAccount lecturerAccount) throws SQLException,RemoteException;
+
+  ArrayList<LecturerAccount> getAllLecturerAccounts() throws SQLException,RemoteException;
 
 
 }

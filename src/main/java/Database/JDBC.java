@@ -38,6 +38,27 @@ public class JDBC {
   }
 
 
+  public int addLecturerAccount(String LecturerName,String username,String password) throws SQLException
+  {
+    String sql = "insert into sep3data.LecturerAccount(lecturerName, username, password)\n" + "values (?,?,?)";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,LecturerName);
+    preparedStatement.setString(2,username);
+    preparedStatement.setString(3,password);
+
+    return preparedStatement.executeUpdate();
+  }
+
+
+  public ResultSet getAllLecturerAccount() throws SQLException
+  {
+    String sql = "select * from sep3data.LecturerAccount";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+    return preparedStatement.executeQuery();
+  }
+
+
   public int sendMessage(String senderName,String receiveName,String text) throws SQLException {
 
     String sql="insert into sep3data.Message(senderName,receiveName,chatMessages)\n" + "values(?,?,?)";
