@@ -144,7 +144,7 @@ public class JDBC {
 
   public int sendFriendRequest(String sender,String receiver,String comment) throws SQLException
   {
-    String sql = "insert into FriendRequest(sender, receiver, comment)\n" + "values (?,?,?)";
+    String sql = "insert into sep3data.FriendRequest(sender, receiver, comment)\n" + "values (?,?,?)";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,sender);
     preparedStatement.setString(2,receiver);

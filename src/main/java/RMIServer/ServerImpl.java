@@ -205,16 +205,8 @@ public class ServerImpl implements Server
 
   public void sendFriendRequest(String sender,String receiver,String comment) throws SQLException
   {
-    try
-    {
       jdbc.sendFriendRequest(sender, receiver, comment);
-
-    }
-    catch (Exception e){
-      System.out.println("you already send request");
-      JOptionPane.showMessageDialog(null,"you already send request","Tip",JOptionPane.ERROR_MESSAGE);
-    }
-
+      System.out.println(sender+" to "+receiver);
   }
 
 

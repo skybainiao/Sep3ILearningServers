@@ -1,6 +1,7 @@
 package com.example.ILearningServer.PostSystem;
 
 import Model.Profile;
+import Model.Request;
 import RMIClient.Client;
 import RMIClient.ClientImpl;
 import Model.Greeting;
@@ -68,16 +69,10 @@ public class UserController
 
 
   @PostMapping("/sendRequest")
-  public void sendFriendRequest(@RequestBody String sender,String receiver,String comment) throws SQLException, RemoteException
+  public void sendFriendRequest(@RequestBody Request request) throws SQLException, RemoteException
   {
-    try
-    {
-      client.sendFriendRequest(sender, receiver, comment);
-    }
-    catch (Exception e){
-      System.out.println("you already send request");
-    }
-
+      client.sendFriendRequest(request.getSender(), request.getReceiver(), request.getComment());
+      System.out.println(request.getSender()+""+request.getReceiver()+""+request.getComment());
   }
 
 
