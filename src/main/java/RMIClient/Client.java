@@ -43,5 +43,7 @@ public interface Client extends Remote
 
   ArrayList<Message> getAllMessageByReceiver(String receiver) throws SQLException,RemoteException;
 
+  void deleteRequest(String sender,String receiver) throws SQLException,RemoteException;
+
 
 }

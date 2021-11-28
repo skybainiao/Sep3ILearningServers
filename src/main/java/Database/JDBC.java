@@ -164,6 +164,17 @@ public class JDBC {
   }
 
 
+  public int deleteRequest(String sender,String receiver) throws SQLException
+  {
+    String sql = "delete from sep3data.FriendRequest where sender = ? and receiver = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,sender);
+    preparedStatement.setString(2,receiver);
+
+    return preparedStatement.executeUpdate();
+  }
+
+
   public int addProfile(String username,String firstName,String lastName,String email,String phoneNumber,String country,String age,String sex) throws SQLException
   {
     String sql = "insert into sep3data.Profile(username, firstName, lastName, email, phoneNumber, country,age,sex)\n" + "values (?,?,?,?,?,?,?,?)";

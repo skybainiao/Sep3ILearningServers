@@ -235,6 +235,12 @@ public class ServerImpl implements Server
   }
 
 
+  public void deleteRequest(String sender,String receiver) throws SQLException,RemoteException
+  {
+    jdbc.deleteRequest(sender,receiver);
+  }
+
+
   public void addProfile(Profile profile) throws SQLException
   {
     jdbc.addProfile(profile.getUsername(), profile.getFirstName(),

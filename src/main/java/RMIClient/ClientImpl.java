@@ -137,4 +137,10 @@ public class ClientImpl implements Client
     return server.getAllMessageByReceiver(receiver);
   }
 
+  @Override public void deleteRequest(String sender, String receiver)
+      throws SQLException, RemoteException
+  {
+    server.deleteRequest(sender,receiver);
+  }
+
 }

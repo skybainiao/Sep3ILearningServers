@@ -65,6 +65,7 @@ public class UserController
   public void addFriend(@RequestBody String username,String friendName) throws SQLException, RemoteException
   {
     client.addFriend(username,friendName);
+    System.out.println("Added a new friend");
   }
 
 
@@ -109,7 +110,13 @@ public class UserController
     String str = gson.toJson(client.getRequest(username));
 
     return str;
+  }
 
+
+  @PostMapping("/deleteRequest")
+  public void delete(@RequestBody String sender,String receiver) throws SQLException, RemoteException
+  {
+    client.deleteRequest(sender, receiver);
   }
 
 
