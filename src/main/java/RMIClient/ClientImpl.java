@@ -143,4 +143,10 @@ public class ClientImpl implements Client
     server.deleteRequest(sender,receiver);
   }
 
+  @Override public ArrayList<Course> getCourses(String courseName)
+      throws SQLException, RemoteException
+  {
+    return server.getCourses(courseName);
+  }
+
 }

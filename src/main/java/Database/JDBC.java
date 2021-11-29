@@ -211,6 +211,16 @@ public class JDBC {
   }
 
 
+  public ResultSet getCourses(String courseName) throws SQLException
+  {
+    String sql = "select *\n" + "from sep3data.Course\n" + "where courseName = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,courseName);
+
+    return preparedStatement.executeQuery();
+  }
+
+
 
 
 }

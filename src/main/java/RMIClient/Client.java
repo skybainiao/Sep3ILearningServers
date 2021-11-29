@@ -45,5 +45,7 @@ public interface Client extends Remote
 
   void deleteRequest(String sender,String receiver) throws SQLException,RemoteException;
 
+  ArrayList<Course> getCourses(String courseName) throws SQLException,RemoteException;
+
 
 }

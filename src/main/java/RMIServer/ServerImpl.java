@@ -280,11 +280,37 @@ public class ServerImpl implements Server
   }
 
 
-  public void deleteProfile(String username) throws SQLException
+  public void deleteProfile(String username) throws SQLException,RemoteException
   {
     jdbc.deleteProfile(username);
     System.out.println(jdbc.deleteProfile(username));
     System.out.println("uesd");
+  }
+
+
+  public ArrayList<Course> getCourses(String courseName) throws SQLException,RemoteException
+  {
+    ResultSet resultSet = jdbc.getCourses(courseName);
+    ArrayList<Course> courses = new ArrayList<>();
+
+    try
+    {
+      while (resultSet.next()){
+        String coursename = resultSet.getString(1);
+        String session = resultSet.getString(2);
+        String date = resultSet.getString(3);
+        String preparation = resultSet.getString(4);
+
+        Course course = new Course(courseName,session,date,preparation);
+        courses.add(course);
+       }
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
+
+    return courses;
   }
 
 
