@@ -8,13 +8,27 @@ public class Course
   private String session;
   private String date;
   private String preparation;
+  private String content;
 
-  public Course(String courseName,String session,String date,String preparation){
+  public Course(String courseName,String session,String date,String preparation,String content){
     this.courseName=courseName;
     this.session=session;
     this.date=date;
     this.preparation=preparation;
+    this.content=content;
 
+
+  }
+
+  public void setContent(String content)
+  {
+    this.content = content;
+
+  }
+
+  public String getContent()
+  {
+    return content;
   }
 
   public void setCourseName(String courseName)

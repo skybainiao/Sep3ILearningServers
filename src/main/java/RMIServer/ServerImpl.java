@@ -2,8 +2,6 @@ package RMIServer;
 
 import Database.JDBC;
 import Model.*;
-
-import javax.swing.*;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -300,8 +298,9 @@ public class ServerImpl implements Server
         String session = resultSet.getString(2);
         String date = resultSet.getString(3);
         String preparation = resultSet.getString(4);
+        String content = resultSet.getString(5);
 
-        Course course = new Course(courseName,session,date,preparation);
+        Course course = new Course(coursename,session,date,preparation,content);
         courses.add(course);
        }
     }

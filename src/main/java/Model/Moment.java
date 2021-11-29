@@ -6,9 +6,13 @@ public class Moment
 
   private String time;
 
-  private String imageUrl;
-
   private String context;
+
+  public Moment(String username,String time,String context){
+    this.username = username;
+    this.time = time;
+    this.context = context;
+  }
 
   public void setUsername(String username)
   {
@@ -18,11 +22,6 @@ public class Moment
   public void setContext(String context)
   {
     this.context = context;
-  }
-
-  public void setImageUrl(String imageUrl)
-  {
-    this.imageUrl = imageUrl;
   }
 
   public void setTime(String time)
@@ -40,11 +39,6 @@ public class Moment
     return context;
   }
 
-  public String getImageUrl()
-  {
-    return imageUrl;
-  }
-
   public String getTime()
   {
     return time;
@@ -53,7 +47,6 @@ public class Moment
   @Override public String toString()
   {
     return "Moment{" + "username='" + username + '\'' + ", time='" + time + '\''
-        + ", imageUrl='" + imageUrl + '\'' + ", context='" + context + '\''
-        + '}';
+        + ", context='" + context + '\'' + '}';
   }
 }
