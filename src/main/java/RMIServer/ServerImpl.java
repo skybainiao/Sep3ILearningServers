@@ -350,11 +350,11 @@ public class ServerImpl implements Server
       while (resultSet.next()){
         String username = resultSet.getString(1);
         String time = resultSet.getString(2);
-        String context = resultSet.getString(3);
+        String content = resultSet.getString(3);
         int like = resultSet.getInt(4);
         int dislike = resultSet.getInt(5);
 
-        Moment moment = new Moment(username,time,context,like,dislike);
+        Moment moment = new Moment(username,time,content,like,dislike);
         moments.add(moment);
 
       }

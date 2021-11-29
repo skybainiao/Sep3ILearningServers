@@ -8,16 +8,16 @@ public class Moment implements Serializable
 
   private String time;
 
-  private String context;
+  private String content;
 
   private int like;
 
   private int dislike;
 
-  public Moment(String username,String time,String context,int like,int dislike){
+  public Moment(String username,String time,String content,int like,int dislike){
     this.username = username;
     this.time = time;
-    this.context = context;
+    this.content = content;
     this.like = like;
     this.dislike = dislike;
   }
@@ -49,7 +49,7 @@ public class Moment implements Serializable
 
   public void setContext(String context)
   {
-    this.context = context;
+    this.content = context;
   }
 
   public void setTime(String time)
@@ -64,7 +64,7 @@ public class Moment implements Serializable
 
   public String getContext()
   {
-    return context;
+    return content;
   }
 
   public String getTime()
@@ -75,7 +75,7 @@ public class Moment implements Serializable
   @Override public String toString()
   {
     return "Moment{" + "username='" + username + '\'' + ", time='" + time + '\''
-        + ", context='" + context + '\'' + ", like=" + like + ", dislike="
+        + ", context='" + content + '\'' + ", like=" + like + ", dislike="
         + dislike + '}';
   }
 }
