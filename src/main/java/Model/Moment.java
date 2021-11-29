@@ -1,6 +1,8 @@
 package Model;
 
-public class Moment
+import java.io.Serializable;
+
+public class Moment implements Serializable
 {
   private String username;
 
@@ -8,10 +10,36 @@ public class Moment
 
   private String context;
 
-  public Moment(String username,String time,String context){
+  private int like;
+
+  private int dislike;
+
+  public Moment(String username,String time,String context,int like,int dislike){
     this.username = username;
     this.time = time;
     this.context = context;
+    this.like = like;
+    this.dislike = dislike;
+  }
+
+  public void setDislike(int dislike)
+  {
+    this.dislike = dislike;
+  }
+
+  public void setLike(int like)
+  {
+    this.like = like;
+  }
+
+  public int getDislike()
+  {
+    return dislike;
+  }
+
+  public int getLike()
+  {
+    return like;
   }
 
   public void setUsername(String username)
@@ -47,6 +75,7 @@ public class Moment
   @Override public String toString()
   {
     return "Moment{" + "username='" + username + '\'' + ", time='" + time + '\''
-        + ", context='" + context + '\'' + '}';
+        + ", context='" + context + '\'' + ", like=" + like + ", dislike="
+        + dislike + '}';
   }
 }

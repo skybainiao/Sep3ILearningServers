@@ -49,4 +49,6 @@ public interface Server extends Remote
 
   ArrayList<Announcement> getAnnouncement(String courseName) throws SQLException,RemoteException;
 
+  ArrayList<Moment> getAllMoments() throws SQLException,RemoteException;
+
 }

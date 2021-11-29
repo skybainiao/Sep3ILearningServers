@@ -49,5 +49,7 @@ public interface Client extends Remote
 
   ArrayList<Announcement> getAnnouncement(String courseName) throws SQLException,RemoteException;
 
+  ArrayList<Moment> getAllMoments() throws SQLException,RemoteException;
+
 
 }

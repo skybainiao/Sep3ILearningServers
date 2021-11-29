@@ -120,6 +120,14 @@ public class UserController
   }
 
 
+  @GetMapping("/getMoments")
+  public String getMoments() throws SQLException, RemoteException
+  {
+    String str = gson.toJson(client.getAllMoments());
+
+    return str;
+  }
+
 
 
 

@@ -223,9 +223,18 @@ public class JDBC {
 
   public ResultSet getAnnouncement(String courseName) throws SQLException
   {
-    String sql = "select *\n" + "from Announcement\n" + "where courseName = ?";
+    String sql = "select *\n" + "from sep3data.Announcement\n" + "where courseName = ?";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,courseName);
+
+    return preparedStatement.executeQuery();
+  }
+
+
+  public ResultSet getAllMoments() throws SQLException
+  {
+    String sql = "select * from sep3data.Moment;";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
     return preparedStatement.executeQuery();
   }

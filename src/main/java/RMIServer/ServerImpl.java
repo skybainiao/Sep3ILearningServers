@@ -341,5 +341,33 @@ public class ServerImpl implements Server
   }
 
 
+  public ArrayList<Moment> getAllMoments() throws SQLException,RemoteException
+  {
+    ResultSet resultSet = jdbc.getAllMoments();
+    ArrayList<Moment> moments = new ArrayList<>();
+
+    try
+    {
+      while (resultSet.next()){
+        String username = resultSet.getString(1);
+        String time = resultSet.getString(2);
+        String context = resultSet.getString(3);
+        int like = resultSet.getInt(4);
+        int dislike = resultSet.getInt(5);
+
+        Moment moment = new Moment(username,time,context,like,dislike);
+        moments.add(moment);
+
+      }
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
+
+    return moments;
+  }
+
+
 
 }

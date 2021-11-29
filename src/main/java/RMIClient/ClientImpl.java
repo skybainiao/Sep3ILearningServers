@@ -155,4 +155,10 @@ public class ClientImpl implements Client
     return server.getAnnouncement(courseName);
   }
 
+  @Override public ArrayList<Moment> getAllMoments()
+      throws SQLException, RemoteException
+  {
+    return server.getAllMoments();
+  }
+
 }
