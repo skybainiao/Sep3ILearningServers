@@ -167,4 +167,16 @@ public class ClientImpl implements Client
     server.addMoment(moment);
   }
 
+  @Override public void like(String username)
+      throws SQLException, RemoteException
+  {
+    server.like(username);
+  }
+
+  @Override public void dislike(String username)
+      throws SQLException, RemoteException
+  {
+    server.dislike(username);
+  }
+
 }

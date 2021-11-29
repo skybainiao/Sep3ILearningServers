@@ -53,5 +53,9 @@ public interface Client extends Remote
 
   void addMoment(Moment moment) throws SQLException,RemoteException;
 
+  void like(String username) throws SQLException,RemoteException;
+
+  void dislike(String username) throws SQLException,RemoteException;
+
 
 }

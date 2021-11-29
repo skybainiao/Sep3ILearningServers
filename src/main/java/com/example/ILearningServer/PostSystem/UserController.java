@@ -136,6 +136,22 @@ public class UserController
   }
 
 
+  @PostMapping("/like")
+  public void like(@RequestBody String username)
+      throws SQLException, RemoteException
+  {
+    client.like(username);
+  }
+
+
+  @PostMapping("/dislike")
+  public void dislike(@RequestBody String username)
+      throws SQLException, RemoteException
+  {
+    client.dislike(username);
+  }
+
+
 
 
 

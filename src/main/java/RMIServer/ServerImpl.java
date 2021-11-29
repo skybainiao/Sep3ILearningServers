@@ -374,13 +374,13 @@ public class ServerImpl implements Server
   }
 
 
-  public void like(String username) throws SQLException
+  public void like(String username) throws SQLException,RemoteException
   {
     jdbc.like(username);
   }
 
 
-  public void dislike(String username) throws SQLException
+  public void dislike(String username) throws SQLException,RemoteException
   {
     jdbc.dislike(username);
   }
