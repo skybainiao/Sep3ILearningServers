@@ -221,6 +221,16 @@ public class JDBC {
   }
 
 
+  public ResultSet getAnnouncement(String courseName) throws SQLException
+  {
+    String sql = "select *\n" + "from Announcement\n" + "where courseName = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,courseName);
+
+    return preparedStatement.executeQuery();
+  }
+
+
 
 
 }

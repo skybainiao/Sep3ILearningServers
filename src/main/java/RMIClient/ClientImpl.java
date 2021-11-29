@@ -149,4 +149,10 @@ public class ClientImpl implements Client
     return server.getCourses(courseName);
   }
 
+  @Override public ArrayList<Announcement> getAnnouncement(String courseName)
+      throws SQLException, RemoteException
+  {
+    return server.getAnnouncement(courseName);
+  }
+
 }

@@ -33,4 +33,14 @@ public class CourseController
   }
 
 
+  @GetMapping("/getAnnouncement")
+  public String getAnnouncement(@RequestParam String courseName)
+      throws SQLException, RemoteException
+  {
+    String str = gson.toJson(client.getAnnouncement(courseName));
+
+    return str;
+  }
+
+
 }
