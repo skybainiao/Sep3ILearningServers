@@ -161,4 +161,10 @@ public class ClientImpl implements Client
     return server.getAllMoments();
   }
 
+  @Override public void addMoment(Moment moment)
+      throws SQLException, RemoteException
+  {
+    server.addMoment(moment);
+  }
+
 }

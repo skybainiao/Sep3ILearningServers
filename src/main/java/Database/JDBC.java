@@ -1,5 +1,7 @@
 package Database;
 
+import Model.Moment;
+
 import java.sql.*;
 
 public class JDBC {
@@ -237,6 +239,21 @@ public class JDBC {
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
     return preparedStatement.executeQuery();
+  }
+
+
+  public int addMoment(String username,String time,String content,int likeNum,int dislike)
+      throws SQLException
+  {
+    String sql = "insert into Moment(username, time, content, likeNum, dislike)\n" + "values (?,?,?,?,?)";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,username);
+    preparedStatement.setString(2,time);
+    preparedStatement.setString(3,content);
+    preparedStatement.setInt(4,likeNum);
+    preparedStatement.setInt(5,dislike);
+
+    return preparedStatement.executeUpdate();
   }
 
 

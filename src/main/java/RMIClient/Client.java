@@ -51,5 +51,7 @@ public interface Client extends Remote
 
   ArrayList<Moment> getAllMoments() throws SQLException,RemoteException;
 
+  void addMoment(Moment moment) throws SQLException,RemoteException;
+
 
 }

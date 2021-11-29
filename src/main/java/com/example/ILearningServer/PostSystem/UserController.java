@@ -1,11 +1,8 @@
 package com.example.ILearningServer.PostSystem;
 
-import Model.Profile;
-import Model.Request;
+import Model.*;
 import RMIClient.Client;
 import RMIClient.ClientImpl;
-import Model.Greeting;
-import Model.User;
 import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.*;
 import java.rmi.NotBoundException;
@@ -126,6 +123,16 @@ public class UserController
     String str = gson.toJson(client.getAllMoments());
 
     return str;
+  }
+
+
+  @PostMapping("/addMoment")
+  public void addMoment(@RequestBody String moment)
+      throws SQLException, RemoteException
+  {
+    Moment moment1 = gson.fromJson(moment,Moment.class);
+
+    client.addMoment(moment1);
   }
 
 

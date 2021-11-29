@@ -369,5 +369,11 @@ public class ServerImpl implements Server
   }
 
 
+  public void addMoment(Moment moment) throws SQLException,RemoteException
+  {
+    jdbc.addMoment(moment.getUsername(), moment.getTime(), moment.getContext(),moment.getLike(),moment.getDislike());
+  }
+
+
 
 }
