@@ -413,5 +413,38 @@ public class ServerImpl implements Server
   }
 
 
+  public void addComment(Comment comment) throws SQLException,RemoteException
+  {
+    jdbc.addComment(comment.getUsername(),comment.getPublisher(),comment.getContent(),comment.getTime());
+  }
+
+
+  public ArrayList<Comment> getAllComments(String username,String publisher,String time) throws SQLException,RemoteException
+  {
+    ResultSet resultSet = jdbc.getComments(username,publisher,time);
+    ArrayList<Comment> comments = new ArrayList<>();
+
+    try
+    {
+      while (resultSet.next()){
+        String userName = resultSet.getString(1);
+        String publisher1 = resultSet.getString(2);
+        String content = resultSet.getString(3);
+        String time1 = resultSet.getString(4);
+
+        Comment comment = new Comment(userName,publisher1,content,time1);
+        comments.add(comment);
+
+      }
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
+
+    return comments;
+  }
+
+
 
 }

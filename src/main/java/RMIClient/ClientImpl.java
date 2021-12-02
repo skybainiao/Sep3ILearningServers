@@ -185,4 +185,16 @@ public class ClientImpl implements Client
     return server.getAllMessagesWithoutEverything();
   }
 
+  @Override public void addComment(Comment comment)
+      throws SQLException, RemoteException
+  {
+    server.addComment(comment);
+  }
+
+  @Override public ArrayList<Comment> getAllComments(String username,
+      String publisher, String time) throws SQLException, RemoteException
+  {
+    return server.getAllComments(username, publisher, time);
+  }
+
 }

@@ -286,6 +286,31 @@ public class JDBC {
   }
 
 
+  public int addComment(String username,String publisher,String content,String time) throws SQLException
+  {
+    String sql = "insert into Comment(username, publisher, content, time)\n" + "values (?,?,?,?)";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,username);
+    preparedStatement.setString(2,publisher);
+    preparedStatement.setString(3,content);
+    preparedStatement.setString(4,time);
+
+    return preparedStatement.executeUpdate();
+  }
+
+
+  public ResultSet getComments(String username,String publisher,String time) throws SQLException
+  {
+    String sql = "select * from Comment where username = ? and publisher = ? and time = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,username);
+    preparedStatement.setString(2,publisher);
+    preparedStatement.setString(3,time);
+
+    return preparedStatement.executeQuery();
+  }
+
+
 
 
 }

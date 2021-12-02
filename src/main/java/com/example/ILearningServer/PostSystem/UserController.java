@@ -152,6 +152,25 @@ public class UserController
   }
 
 
+  @PostMapping("/addComment")
+  public void addComment(@RequestBody String comment)
+      throws SQLException, RemoteException
+  {
+    Comment comment1 = gson.fromJson(comment,Comment.class);
+    client.addComment(comment1);
+
+  }
+
+
+  @GetMapping("/getComments")
+  public String getComments(@RequestParam String username,String publisher,String time)
+      throws SQLException, RemoteException
+  {
+    String str = gson.toJson(client.getAllComments(username, publisher, time));
+    return str;
+  }
+
+
 
 
 

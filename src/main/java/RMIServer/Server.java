@@ -59,4 +59,8 @@ public interface Server extends Remote
 
   ArrayList<Message> getAllMessagesWithoutEverything() throws SQLException,RemoteException;
 
+  void addComment(Comment comment) throws SQLException,RemoteException;
+
+  ArrayList<Comment> getAllComments(String username,String publisher,String time) throws SQLException,RemoteException;
+
 }
