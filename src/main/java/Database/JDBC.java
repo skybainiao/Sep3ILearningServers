@@ -288,7 +288,7 @@ public class JDBC {
 
   public int addComment(String username,String publisher,String content,String time) throws SQLException
   {
-    String sql = "insert into Comment(username, publisher, content, time)\n" + "values (?,?,?,?)";
+    String sql = "insert into sep3data.Comment(username, publisher, content, time)\n" + "values (?,?,?,?)";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,username);
     preparedStatement.setString(2,publisher);
@@ -301,7 +301,7 @@ public class JDBC {
 
   public ResultSet getComments(String username,String publisher,String time) throws SQLException
   {
-    String sql = "select * from Comment where username = ? and publisher = ? and time = ?";
+    String sql = "select * from sep3data.Comment where username = ? and publisher = ? and time = ?";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,username);
     preparedStatement.setString(2,publisher);
