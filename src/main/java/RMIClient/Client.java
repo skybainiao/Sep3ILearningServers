@@ -57,5 +57,7 @@ public interface Client extends Remote
 
   void dislike(String username) throws SQLException,RemoteException;
 
+  ArrayList<Message> getAllMessagesWithoutEverything() throws SQLException,RemoteException;
+
 
 }

@@ -94,6 +94,33 @@ public class ServerImpl implements Server
   }
 
 
+  public ArrayList<Message> getAllMessagesWithoutEverything()
+      throws SQLException,RemoteException
+  {
+    ResultSet resultSet = jdbc.getAllMessages1();
+    ArrayList<Message> messages = new ArrayList<>();
+
+    try
+    {
+      while (resultSet.next()){
+        String sender = resultSet.getString(1);
+        String receiver = resultSet.getString(2);
+        String text = resultSet.getString(3);
+
+        Message message = new Message(sender,receiver,text);
+        messages.add(message);
+
+      }
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
+
+    return messages;
+  }
+
+
   public ArrayList<Message> getAllMessage(String senderName, String receiveName) throws SQLException,RemoteException{
     ResultSet rs = jdbc.getMessage(senderName,receiveName);
     ArrayList<Message> messages = new ArrayList<>();

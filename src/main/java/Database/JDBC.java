@@ -73,6 +73,15 @@ public class JDBC {
   }
 
 
+  public ResultSet getAllMessages1() throws SQLException
+  {
+    String sql = "select * from sep3data.Message;";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+    return preparedStatement.executeQuery();
+  }
+
+
   public ResultSet getMessage(String senderName,String receiveName) throws SQLException {
     String sql="select *\n" + "from sep3data.Message\n" +
         "where senderName = ? and receiveName = ?\n" +
@@ -245,7 +254,7 @@ public class JDBC {
   public int addMoment(String username,String time,String content,int likeNum,int dislike)
       throws SQLException
   {
-    String sql = "insert into Moment(username, time, content, likeNum, dislike)\n" + "values (?,?,?,?,?)";
+    String sql = "insert into sep3data.Moment(username, time, content, likeNum, dislike)\n" + "values (?,?,?,?,?)";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,username);
     preparedStatement.setString(2,time);
@@ -259,7 +268,7 @@ public class JDBC {
 
   public int like(String username) throws SQLException
   {
-    String sql = "update Moment set likeNum = likeNum+1 where username = ?";
+    String sql = "update sep3data.Moment set likeNum = likeNum+1 where username = ?";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,username);
 
@@ -269,7 +278,7 @@ public class JDBC {
 
   public int dislike(String username) throws SQLException
   {
-    String sql = "update Moment set dislike = dislike+1 where username = ?";
+    String sql = "update sep3data.Moment set dislike = dislike+1 where username = ?";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,username);
 

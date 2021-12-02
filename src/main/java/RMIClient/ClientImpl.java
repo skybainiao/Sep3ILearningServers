@@ -179,4 +179,10 @@ public class ClientImpl implements Client
     server.dislike(username);
   }
 
+  @Override public ArrayList<Message> getAllMessagesWithoutEverything()
+      throws SQLException, RemoteException
+  {
+    return server.getAllMessagesWithoutEverything();
+  }
+
 }

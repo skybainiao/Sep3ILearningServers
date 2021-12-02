@@ -63,6 +63,14 @@ public class ChatController
   }
 
 
+  @GetMapping("/getAMS")
+  public String getAMS() throws SQLException, RemoteException
+  {
+    String str = gson.toJson(client.getAllMessagesWithoutEverything());
+    return str;
+  }
+
+
 
 
 
