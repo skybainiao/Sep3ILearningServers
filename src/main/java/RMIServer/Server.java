@@ -65,4 +65,6 @@ public interface Server extends Remote
 
   ArrayList<Group> groups() throws SQLException,RemoteException;
 
+  ArrayList<String> getGroupName() throws SQLException,RemoteException;
+
 }

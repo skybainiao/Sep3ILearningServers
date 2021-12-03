@@ -33,4 +33,12 @@ public class GroupController
   }
 
 
+  @GetMapping("/getGroupName")
+  public String getGroupName() throws SQLException, RemoteException
+  {
+    String str = gson.toJson(client.getGroupName());
+
+    return str;
+  }
+
 }

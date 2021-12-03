@@ -1,5 +1,6 @@
 package Database;
 
+import Model.Group;
 import Model.Moment;
 
 import java.sql.*;
@@ -317,6 +318,26 @@ public class JDBC {
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
     return preparedStatement.executeQuery();
+  }
+
+
+  public ResultSet getGroupName() throws SQLException
+  {
+    String sql = "select groupName\n" + "from sep3data.Groups\n" + "group by groupName;";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+    return preparedStatement.executeQuery();
+  }
+
+
+  public int addGroup(Group group) throws SQLException
+  {
+    String sql = "insert into Groups(groupName,memberName)\n" + "values (?,?)";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,group.getGroupName());
+    preparedStatement.setString(2,group.getMemberName());
+
+    return preparedStatement.executeUpdate();
   }
 
 
