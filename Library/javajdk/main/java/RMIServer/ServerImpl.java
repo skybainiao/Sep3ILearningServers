@@ -94,33 +94,6 @@ public class ServerImpl implements Server
   }
 
 
-  public ArrayList<Message> getAllMessagesWithoutEverything()
-      throws SQLException,RemoteException
-  {
-    ResultSet resultSet = jdbc.getAllMessages1();
-    ArrayList<Message> messages = new ArrayList<>();
-
-    try
-    {
-      while (resultSet.next()){
-        String sender = resultSet.getString(1);
-        String receiver = resultSet.getString(2);
-        String text = resultSet.getString(3);
-
-        Message message = new Message(sender,receiver,text);
-        messages.add(message);
-
-      }
-    }
-    catch (SQLException throwables)
-    {
-      throwables.printStackTrace();
-    }
-
-    return messages;
-  }
-
-
   public ArrayList<Message> getAllMessage(String senderName, String receiveName) throws SQLException,RemoteException{
     ResultSet rs = jdbc.getMessage(senderName,receiveName);
     ArrayList<Message> messages = new ArrayList<>();
@@ -377,11 +350,11 @@ public class ServerImpl implements Server
       while (resultSet.next()){
         String username = resultSet.getString(1);
         String time = resultSet.getString(2);
-        String content = resultSet.getString(3);
+        String context = resultSet.getString(3);
         int like = resultSet.getInt(4);
         int dislike = resultSet.getInt(5);
 
-        Moment moment = new Moment(username,time,content,like,dislike);
+        Moment moment = new Moment(username,time,context,like,dislike);
         moments.add(moment);
 
       }
@@ -401,73 +374,15 @@ public class ServerImpl implements Server
   }
 
 
-  public void like(String username) throws SQLException,RemoteException
+  public void like(String username) throws SQLException
   {
     jdbc.like(username);
   }
 
 
-  public void dislike(String username) throws SQLException,RemoteException
+  public void dislike(String username) throws SQLException
   {
     jdbc.dislike(username);
-  }
-
-
-  public void addComment(Comment comment) throws SQLException,RemoteException
-  {
-    jdbc.addComment(comment.getUsername(),comment.getPublisher(),comment.getContent(),comment.getTime());
-  }
-
-
-  public ArrayList<Comment> getAllComments(String username,String publisher,String time) throws SQLException,RemoteException
-  {
-    ResultSet resultSet = jdbc.getComments(username,publisher,time);
-    ArrayList<Comment> comments = new ArrayList<>();
-
-    try
-    {
-      while (resultSet.next()){
-        String userName = resultSet.getString(1);
-        String publisher1 = resultSet.getString(2);
-        String content = resultSet.getString(3);
-        String time1 = resultSet.getString(4);
-
-        Comment comment = new Comment(userName,publisher1,content,time1);
-        comments.add(comment);
-
-      }
-    }
-    catch (SQLException throwables)
-    {
-      throwables.printStackTrace();
-    }
-
-    return comments;
-  }
-
-
-  public ArrayList<Group> groups() throws SQLException,RemoteException
-  {
-    ResultSet resultSet = jdbc.getGroups();
-    ArrayList<Group> groups = new ArrayList<>();
-
-    try
-    {
-      while (resultSet.next()){
-        String groupName = resultSet.getString(1);
-        String memberName = resultSet.getString(2);
-
-        Group group = new Group(groupName,memberName);
-        groups.add(group);
-
-      }
-    }
-    catch (SQLException throwables)
-    {
-      throwables.printStackTrace();
-    }
-
-    return groups;
   }
 
 

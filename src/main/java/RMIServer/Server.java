@@ -63,4 +63,6 @@ public interface Server extends Remote
 
   ArrayList<Comment> getAllComments(String username,String publisher,String time) throws SQLException,RemoteException;
 
+  ArrayList<Group> groups() throws SQLException,RemoteException;
+
 }

@@ -1,4 +1,5 @@
-package RMIClient;
+package RMIServer;
+
 import Model.*;
 
 import java.rmi.Remote;
@@ -6,12 +7,11 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface Client extends Remote
+public interface Server extends Remote
 {
-
-  ArrayList<User> getAllUsers() throws RemoteException, SQLException;
-
   void addUser(User user) throws RemoteException, SQLException;
+
+  ArrayList<User> getAllUser() throws RemoteException, SQLException;
 
   void sendMessage(String senderName,String receiveName,String text) throws SQLException,RemoteException;
 
@@ -52,18 +52,5 @@ public interface Client extends Remote
   ArrayList<Moment> getAllMoments() throws SQLException,RemoteException;
 
   void addMoment(Moment moment) throws SQLException,RemoteException;
-
-  void like(String username) throws SQLException,RemoteException;
-
-  void dislike(String username) throws SQLException,RemoteException;
-
-  ArrayList<Message> getAllMessagesWithoutEverything() throws SQLException,RemoteException;
-
-  void addComment(Comment comment) throws SQLException,RemoteException;
-
-  ArrayList<Comment> getAllComments(String username,String publisher,String time) throws SQLException,RemoteException;
-
-  ArrayList<Group> groups() throws SQLException,RemoteException;
-
 
 }

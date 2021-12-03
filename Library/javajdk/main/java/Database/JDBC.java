@@ -73,15 +73,6 @@ public class JDBC {
   }
 
 
-  public ResultSet getAllMessages1() throws SQLException
-  {
-    String sql = "select * from sep3data.Message;";
-    PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-    return preparedStatement.executeQuery();
-  }
-
-
   public ResultSet getMessage(String senderName,String receiveName) throws SQLException {
     String sql="select *\n" + "from sep3data.Message\n" +
         "where senderName = ? and receiveName = ?\n" +
@@ -254,7 +245,7 @@ public class JDBC {
   public int addMoment(String username,String time,String content,int likeNum,int dislike)
       throws SQLException
   {
-    String sql = "insert into sep3data.Moment(username, time, content, likeNum, dislike)\n" + "values (?,?,?,?,?)";
+    String sql = "insert into Moment(username, time, content, likeNum, dislike)\n" + "values (?,?,?,?,?)";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,username);
     preparedStatement.setString(2,time);
@@ -268,7 +259,7 @@ public class JDBC {
 
   public int like(String username) throws SQLException
   {
-    String sql = "update sep3data.Moment set likeNum = likeNum+1 where username = ?";
+    String sql = "update Moment set likeNum = likeNum+1 where username = ?";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,username);
 
@@ -278,45 +269,11 @@ public class JDBC {
 
   public int dislike(String username) throws SQLException
   {
-    String sql = "update sep3data.Moment set dislike = dislike+1 where username = ?";
+    String sql = "update Moment set dislike = dislike+1 where username = ?";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,username);
 
     return preparedStatement.executeUpdate();
-  }
-
-
-  public int addComment(String username,String publisher,String content,String time) throws SQLException
-  {
-    String sql = "insert into sep3data.Comment(username, publisher, content, time)\n" + "values (?,?,?,?)";
-    PreparedStatement preparedStatement = connection.prepareStatement(sql);
-    preparedStatement.setString(1,username);
-    preparedStatement.setString(2,publisher);
-    preparedStatement.setString(3,content);
-    preparedStatement.setString(4,time);
-
-    return preparedStatement.executeUpdate();
-  }
-
-
-  public ResultSet getComments(String username,String publisher,String time) throws SQLException
-  {
-    String sql = "select * from sep3data.Comment where username = ? and publisher = ? and time = ?";
-    PreparedStatement preparedStatement = connection.prepareStatement(sql);
-    preparedStatement.setString(1,username);
-    preparedStatement.setString(2,publisher);
-    preparedStatement.setString(3,time);
-
-    return preparedStatement.executeQuery();
-  }
-
-
-  public ResultSet getGroups() throws SQLException
-  {
-    String sql = "select * from sep3data.Groups";
-    PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-    return preparedStatement.executeQuery();
   }
 
 

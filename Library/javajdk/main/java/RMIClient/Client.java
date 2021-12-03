@@ -53,17 +53,5 @@ public interface Client extends Remote
 
   void addMoment(Moment moment) throws SQLException,RemoteException;
 
-  void like(String username) throws SQLException,RemoteException;
-
-  void dislike(String username) throws SQLException,RemoteException;
-
-  ArrayList<Message> getAllMessagesWithoutEverything() throws SQLException,RemoteException;
-
-  void addComment(Comment comment) throws SQLException,RemoteException;
-
-  ArrayList<Comment> getAllComments(String username,String publisher,String time) throws SQLException,RemoteException;
-
-  ArrayList<Group> groups() throws SQLException,RemoteException;
-
 
 }
