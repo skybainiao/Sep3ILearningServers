@@ -209,4 +209,10 @@ public class ClientImpl implements Client
     return server.getGroupName();
   }
 
+  @Override public ArrayList<String> getGroupMember(String username)
+      throws SQLException, RemoteException
+  {
+    return server.getGroupMember(username);
+  }
+
 }

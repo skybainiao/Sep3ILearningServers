@@ -341,6 +341,16 @@ public class JDBC {
   }
 
 
+  public ResultSet getGroupMember(String username) throws SQLException
+  {
+    String sql = "select memberName\n" + "from Groups\n"
+        + "where groupName = (select groupName from Groups where memberName = ?);";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,username);
+
+    return preparedStatement.executeQuery();
+  }
+
 
 
 }

@@ -494,4 +494,27 @@ public class ServerImpl implements Server
   }
 
 
+  public ArrayList<String> getGroupMember(String username) throws SQLException,RemoteException
+  {
+    ResultSet resultSet = jdbc.getGroupName();
+    ArrayList<String> groupMember = new ArrayList<>();
+
+    try
+    {
+      while (resultSet.next()){
+        String groupMemberName = resultSet.getString(1);
+
+        groupMember.add(groupMemberName);
+
+      }
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
+
+    return groupMember;
+  }
+
+
 }
