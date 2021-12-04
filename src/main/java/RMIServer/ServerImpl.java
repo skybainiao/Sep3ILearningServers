@@ -496,7 +496,7 @@ public class ServerImpl implements Server
 
   public ArrayList<String> getGroupMember(String username) throws SQLException,RemoteException
   {
-    ResultSet resultSet = jdbc.getGroupName();
+    ResultSet resultSet = jdbc.getGroupMember(username);
     ArrayList<String> groupMember = new ArrayList<>();
 
     try
