@@ -215,4 +215,10 @@ public class ClientImpl implements Client
     return server.getGroupMember(username);
   }
 
+  @Override public void addCourse(Course course)
+      throws SQLException, RemoteException
+  {
+    server.addCourse(course);
+  }
+
 }

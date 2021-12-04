@@ -1,9 +1,11 @@
 package com.example.ILearningServer.PostSystem;
 
+import Model.Course;
 import RMIClient.Client;
 import RMIClient.ClientImpl;
 import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,6 +45,15 @@ public class CourseController
     String str = gson.toJson(client.getAnnouncement(courseName));
 
     return str;
+  }
+
+
+  @PostMapping("/addCourse")
+  public void addCourse(@RequestParam String course)
+      throws SQLException, RemoteException
+  {
+    Course course1 = gson.fromJson(course,Course.class);
+    client.addCourse(course1);
   }
 
 

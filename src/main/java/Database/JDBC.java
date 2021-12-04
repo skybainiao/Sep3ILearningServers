@@ -352,5 +352,19 @@ public class JDBC {
   }
 
 
+  public int addCourse(String courseName,String session,String date,String content,String preparation)
+      throws SQLException
+  {
+    String sql = "insert into Course(courseName, session, date, content,preparation)\n" + "values (?,?,?,?,?)";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,courseName);
+    preparedStatement.setString(2,session);
+    preparedStatement.setString(3,date);
+    preparedStatement.setString(4,content);
+    preparedStatement.setString(5,preparation);
+
+    return preparedStatement.executeUpdate();
+  }
+
 
 }

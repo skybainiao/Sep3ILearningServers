@@ -517,4 +517,10 @@ public class ServerImpl implements Server
   }
 
 
+  public void addCourse(Course course) throws SQLException,RemoteException
+  {
+    jdbc.addCourse(course.getCourseName(),course.getSession(),course.getDate(),course.getContent(),course.getPreparation());
+  }
+
+
 }

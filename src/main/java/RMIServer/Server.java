@@ -69,4 +69,6 @@ public interface Server extends Remote
 
   ArrayList<String> getGroupMember(String username) throws SQLException,RemoteException;
 
+  void addCourse(Course course) throws SQLException,RemoteException;
+
 }
