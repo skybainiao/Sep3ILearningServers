@@ -332,7 +332,7 @@ public class JDBC {
 
   public int addGroup(Group group) throws SQLException
   {
-    String sql = "insert into Groups(groupName,memberName)\n" + "values (?,?)";
+    String sql = "insert into sep3data.Groups(groupName,memberName)\n" + "values (?,?)";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,group.getGroupName());
     preparedStatement.setString(2,group.getMemberName());
@@ -343,8 +343,8 @@ public class JDBC {
 
   public ResultSet getGroupMember(String username) throws SQLException
   {
-    String sql = "select memberName\n" + "from Groups\n"
-        + "where groupName = (select groupName from Groups where memberName = ?);";
+    String sql = "select memberName\n" + "from sep3data.Groups\n"
+        + "where groupName = (select groupName from sep3data.Groups where memberName = ?);";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,username);
 
@@ -355,7 +355,7 @@ public class JDBC {
   public int addCourse(String courseName,String session,String date,String content,String preparation)
       throws SQLException
   {
-    String sql = "insert into Course(courseName, session, date, content,preparation)\n" + "values (?,?,?,?,?)";
+    String sql = "insert into sep3data.Course(courseName, session, date, content,preparation)\n" + "values (?,?,?,?,?)";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,courseName);
     preparedStatement.setString(2,session);
