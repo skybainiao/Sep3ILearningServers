@@ -241,6 +241,15 @@ public class JDBC {
   }
 
 
+  public ResultSet getAllAnnouncement() throws SQLException
+  {
+    String sql = "select *\n" + "from sep3data.Announcement";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+    return preparedStatement.executeQuery();
+  }
+
+
   public ResultSet getAllMoments() throws SQLException
   {
     String sql = "select * from sep3data.Moment;";

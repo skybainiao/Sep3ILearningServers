@@ -49,6 +49,16 @@ public class CourseController
   }
 
 
+  @GetMapping("/getAllAnnouncement")
+  public String getAllAnnouncement()
+      throws SQLException, RemoteException
+  {
+    String str = gson.toJson(client.getAllAnnouncement());
+
+    return str;
+  }
+
+
   @PostMapping("/addCourse")
   public void addCourse(@RequestParam String course)
       throws SQLException, RemoteException

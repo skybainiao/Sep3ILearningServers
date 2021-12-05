@@ -73,4 +73,6 @@ public interface Server extends Remote
 
   void addAnnouncement(Announcement announcement) throws SQLException,RemoteException;
 
+  ArrayList<Announcement> getAllAnnouncement() throws SQLException,RemoteException;
+
 }

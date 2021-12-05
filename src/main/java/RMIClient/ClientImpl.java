@@ -227,4 +227,10 @@ public class ClientImpl implements Client
     server.addAnnouncement(announcement);
   }
 
+  @Override public ArrayList<Announcement> getAllAnnouncement()
+      throws SQLException, RemoteException
+  {
+    return server.getAllAnnouncement();
+  }
+
 }

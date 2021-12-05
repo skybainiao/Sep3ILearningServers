@@ -367,6 +367,33 @@ public class ServerImpl implements Server
   }
 
 
+  public ArrayList<Announcement> getAllAnnouncement() throws SQLException,RemoteException
+  {
+    ResultSet resultSet = jdbc.getAllAnnouncement();
+    ArrayList<Announcement> announcements = new ArrayList<>();
+
+    try
+    {
+      while (resultSet.next()){
+        String coursename = resultSet.getString(1);
+        String LecturerName = resultSet.getString(2);
+        String time = resultSet.getString(3);
+        String content = resultSet.getString( 4);
+
+        Announcement announcement = new Announcement(coursename,LecturerName,time,content);
+        announcements.add( announcement);
+
+      }
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
+
+    return announcements;
+  }
+
+
   public ArrayList<Moment> getAllMoments() throws SQLException,RemoteException
   {
     ResultSet resultSet = jdbc.getAllMoments();
