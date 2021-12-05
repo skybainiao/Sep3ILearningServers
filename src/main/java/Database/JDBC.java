@@ -1,8 +1,6 @@
 package Database;
 
 import Model.Group;
-import Model.Moment;
-
 import java.sql.*;
 
 public class JDBC {
@@ -362,6 +360,20 @@ public class JDBC {
     preparedStatement.setString(3,date);
     preparedStatement.setString(4,content);
     preparedStatement.setString(5,preparation);
+
+    return preparedStatement.executeUpdate();
+  }
+
+
+  public int addAnnouncement(String courseName,String LecturerName,String time,String content)
+      throws SQLException
+  {
+    String sql = "insert into Announcement(courseName, LecturerName, time, content)\n" + "values (?,?,?,?)";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setString(1,courseName);
+    preparedStatement.setString(2,LecturerName);
+    preparedStatement.setString(3,time);
+    preparedStatement.setString(4,content);
 
     return preparedStatement.executeUpdate();
   }

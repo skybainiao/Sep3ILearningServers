@@ -523,4 +523,10 @@ public class ServerImpl implements Server
   }
 
 
+  public void addAnnouncement(Announcement announcement) throws SQLException,RemoteException
+  {
+    jdbc.addAnnouncement(announcement.getCourseName(),announcement.getLecturerName(),announcement.getTime(),announcement.getContent());
+  }
+
+
 }

@@ -71,5 +71,7 @@ public interface Client extends Remote
 
   void addCourse(Course course) throws SQLException,RemoteException;
 
+  void addAnnouncement(Announcement announcement) throws SQLException,RemoteException;
+
 
 }

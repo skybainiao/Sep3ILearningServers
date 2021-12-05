@@ -71,4 +71,6 @@ public interface Server extends Remote
 
   void addCourse(Course course) throws SQLException,RemoteException;
 
+  void addAnnouncement(Announcement announcement) throws SQLException,RemoteException;
+
 }
