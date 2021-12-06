@@ -75,4 +75,6 @@ public interface Server extends Remote
 
   ArrayList<Announcement> getAllAnnouncement() throws SQLException,RemoteException;
 
+  void addGroup(Group group) throws SQLException,RemoteException;
+
 }

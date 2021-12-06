@@ -556,4 +556,10 @@ public class ServerImpl implements Server
   }
 
 
+  public void addGroup(Group group) throws SQLException,RemoteException
+  {
+    jdbc.addGroup(group);
+  }
+
+
 }

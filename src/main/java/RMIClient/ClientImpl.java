@@ -233,4 +233,10 @@ public class ClientImpl implements Client
     return server.getAllAnnouncement();
   }
 
+  @Override public void addGroup(Group group)
+      throws SQLException, RemoteException
+  {
+    server.addGroup(group);
+  }
+
 }

@@ -1,11 +1,10 @@
 package com.example.ILearningServer.PostSystem;
 
+import Model.Group;
 import RMIClient.Client;
 import RMIClient.ClientImpl;
 import com.google.gson.Gson;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -50,5 +49,14 @@ public class GroupController
 
     return str;
   }
+
+
+  @PostMapping("/addGroup")
+  public void addGroup(@RequestBody String group) throws SQLException, RemoteException
+  {
+    Group group1 = gson.fromJson(group,Group.class);
+    client.addGroup(group1);
+  }
+
 
 }
