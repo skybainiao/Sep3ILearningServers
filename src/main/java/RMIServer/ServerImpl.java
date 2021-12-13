@@ -15,9 +15,9 @@ public class ServerImpl implements Server
   private JDBC jdbc;
 
   public ServerImpl() throws Exception{
-    Registry registry = LocateRegistry.createRegistry(6666);
+    Registry registry = LocateRegistry.createRegistry(5555);
     registry.bind("Server",this);
-    UnicastRemoteObject.exportObject(this,6666);
+    UnicastRemoteObject.exportObject(this,5555);
     jdbc = new JDBC();
 
   }
