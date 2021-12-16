@@ -5,10 +5,7 @@ import Model.Course;
 import RMIClient.Client;
 import RMIClient.ClientImpl;
 import com.google.gson.Gson;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -60,16 +57,17 @@ public class CourseController
 
 
   @PostMapping("/addCourse")
-  public void addCourse(@RequestParam String course)
+  public void addCourse(@RequestBody String course)
       throws SQLException, RemoteException
   {
     Course course1 = gson.fromJson(course,Course.class);
     client.addCourse(course1);
+    System.out.println("SDJ Course");
   }
 
 
   @PostMapping("/addAnnouncement")
-  public void addAnnouncement(@RequestParam String announcement)
+  public void addAnnouncement(@RequestBody String announcement)
       throws SQLException, RemoteException
   {
     Announcement announcement1 = gson.fromJson(announcement, Announcement.class);

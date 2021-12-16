@@ -377,7 +377,7 @@ public class JDBC {
   public int addAnnouncement(String courseName,String LecturerName,String time,String content)
       throws SQLException
   {
-    String sql = "insert into Announcement(courseName, LecturerName, time, content)\n" + "values (?,?,?,?)";
+    String sql = "insert into sep3data.Announcement(courseName, LecturerName, time, content)\n" + "values (?,?,?,?)";
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1,courseName);
     preparedStatement.setString(2,LecturerName);
